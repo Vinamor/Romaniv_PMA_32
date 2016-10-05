@@ -22,8 +22,49 @@ namespace WpfApplication1
     {
         public MainWindow()
         {
-            int a = 4;
+            
             InitializeComponent();
         }
+    }
+
+    public abstract class Flight
+    {
+        private int flightNumber;
+        private string destination;
+        private string departure;
+        private DateTime departureTime;
+        private DateTime landingTime;
+        private bool isMultyStop;
+        private string multyStop;
+        private string planeType;
+        private int seatAmount;
+        private decimal cost;
+
+
+
+      abstract public decimal costOfFlight()
+       {
+           return cost;
+       }
+    }
+
+    public class SingleTicket : Flight
+    {
+        private string passangerName;
+        private string passangerSurname;
+        private int passengersAmount;
+        private string seatNumber;
+     
+    }
+
+    public class GroupTicket: SingleTicket
+    {
+        private int passengersAmount;
+
+       override public decimal costOfFlight()
+        {
+            return costOfFlight() * passengersAmount;
+        }
+
     }
 }
