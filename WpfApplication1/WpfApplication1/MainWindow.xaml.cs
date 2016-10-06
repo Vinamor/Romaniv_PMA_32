@@ -22,7 +22,6 @@ namespace WpfApplication1
     {
         public MainWindow()
         {
-            
             InitializeComponent();
         }
     }
@@ -42,20 +41,27 @@ namespace WpfApplication1
         private bool isMultyStop;
         private string multyStop;
         private string planeType;
+        private string Class;
         private int seatAmount;
         private decimal cost;
 
 
 
-      abstract public decimal costOfFlight()
+       abstract public decimal costOfFlight()
        {
            return cost;
        }
+     
     }
 
     public class SingleTicket : Flight
     {
         private Client client;
+
+        public override decimal costOfFlight()
+        {
+            return costOfFlight();
+        }
     }
 
     public class GroupTicket: Flight
