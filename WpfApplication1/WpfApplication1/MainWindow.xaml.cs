@@ -27,7 +27,12 @@ namespace WpfApplication1
         }
     }
 
-    public abstract class Flight
+    public abstract class ID
+    {
+        public int Id { get; set; }
+    } 
+
+    public abstract class Flight: ID
     {
         private int flightNumber;
         private string destination;
@@ -50,21 +55,25 @@ namespace WpfApplication1
 
     public class SingleTicket : Flight
     {
-        private string passangerName;
-        private string passangerSurname;
-        private int passengersAmount;
-        private string seatNumber;
-     
+        private Client client;
     }
 
-    public class GroupTicket: SingleTicket
+    public class GroupTicket: Flight
     {
-        private int passengersAmount;
-
-       override public decimal costOfFlight()
+        private List<Client> listOfClients;
+        
+         override public decimal costOfFlight()
         {
-            return costOfFlight() * passengersAmount;
+            return costOfFlight() * listOfClients.Count;
         }
+    }
 
+    public class Client: ID
+    {
+        private string firstName;
+        private string lastName;
+        private string seatNumber;
     }
 }
+
+
