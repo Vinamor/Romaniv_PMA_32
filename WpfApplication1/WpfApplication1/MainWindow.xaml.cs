@@ -26,12 +26,9 @@ namespace WpfApplication1
         }
     }
 
-    public abstract class ID
-    {
-        public int Id { get; set; }
-    } 
+ 
 
-    public abstract class Flight: ID
+    public abstract class Flight
     {
         private int flightNumber;
         private string destination;
@@ -41,11 +38,8 @@ namespace WpfApplication1
         private bool isMultyStop;
         private string multyStop;
         private string planeType;
-        private string Class;
         private int seatAmount;
         private decimal cost;
-
-
 
        abstract public decimal costOfFlight()
        {
@@ -58,7 +52,7 @@ namespace WpfApplication1
     {
         private Client client;
 
-        public override decimal costOfFlight()
+        override public decimal costOfFlight()
         {
             return costOfFlight();
         }
@@ -74,12 +68,43 @@ namespace WpfApplication1
         }
     }
 
-    public class Client: ID
+     public class Client
     {
         private string firstName;
         private string lastName;
+        private int passportNumber;
         private string seatNumber;
+        private double maxLuggageWeigth;
+        private string nameOfClass;
+        private string seatType;
+        private int comfortLevel;
     }
+
+
+     public class FirstClassClient : Client
+    {
+        private bool limusineToHotel;
+        private bool hotelRoomReservation;
+    }
+
+     public class BusinessClassClient : Client
+    {
+        private bool shoppingCatalogues;
+        private bool limusineToHotel;
+    }
+
+     public class DisabledClient : Client
+    {
+        private bool additionalSeat;
+        private bool accompanimentNeed;
+        private bool wheelchair;
+        private string specialRequests;
+    }
+
+     public class ClientWithAnimal : Client
+    {
+        private bool baggageCage;
+    } 
 }
 
 
